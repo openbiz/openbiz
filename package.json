@@ -1,19 +1,38 @@
 {
-  "name": "openbiz",
-  "version": "3.0.0",
-  "private": false,
-  "scripts": {
-    "start": "node app.js"
-  },
-  "dependencies": {
-    "async": "~0.2.9",
-    "emailjs": "~0.3.6",
-    "express": "~3.4.4",
-    "mongoose": "~3.8.1"
-  },
-  "devDependencies": {
-    "grunt": "~0.4.1",
-    "grunt-contrib-jshint": "~0.7.2",
-    "grunt-jsdoc":"~0.4.2"
-  }
+    "name": "openbiz",
+    "description": "lightweight translation module with dynamic json storage",
+    "version": "0.4.1",
+    "homepage": "http://github.com/openbiz/openbiz",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/openbiz/openbiz.git"
+    },
+    "author": {
+        "name": "Jixian Wang",
+        "email": "jixian@openbiz.me"
+    },
+    "scripts":
+    {
+        "start": "node app.js"
+    },
+    "dependencies":
+    {
+        "async": "~0.2.9",
+        "emailjs": "~0.3.6",
+        "express": "~3.4.4",
+        "mongoose": "~3.8.1"
+    },
+    "devDependencies":
+    {
+        "grunt": "~0.4.1",
+        "grunt-jsdoc":"~0.4.2"
+    },
+    "engines":
+    {
+        "node": ">=0.10.0"
+    },
+    "readmeFilename": "README.md",
+    "bugs": {
+      "url": "https://github.com/openbiz/openbiz/issues"
+    }
 }

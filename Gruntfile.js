@@ -10,24 +10,12 @@ module.exports = function(grunt) {
         ],
         dest: 'doc'
       }
-    },
-    jshint: {
-      server: {
-        options: {
-          jshintrc: '.jshintrc-server'
-        },
-        src: [
-          'lib/**/*.js'
-        ]
-      }
     }
   });
 
 
-  grunt.loadNpmTasks('grunt-contrib-jshint');
   grunt.loadNpmTasks('grunt-jsdoc');
 
-  grunt.registerTask('default', ['build', 'lint']);
+  grunt.registerTask('default', ['build']);
   grunt.registerTask('build', ['jsdoc']);
-  grunt.registerTask('lint', ['jshint']);
 };
