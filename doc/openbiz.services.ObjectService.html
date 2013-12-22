@@ -161,7 +161,150 @@ Used for get specified Openbiz class
         <dl>
             
 <dt>
-    <h4 class="name" id="getModel"><span class="type-signature">&lt;static> </span>getModel<span class="signature">(objectName)</span><span class="type-signature"> &rarr; {<a href="openbiz.objects.Controller.html">openbiz.objects.Controller</a>}</span></h4>
+    <h4 class="name" id="getController"><span class="type-signature">&lt;static> </span>getController<span class="signature">(objectName)</span><span class="type-signature"> &rarr; {<a href="openbiz.objects.Controller.html">openbiz.objects.Controller</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get specified openbiz controller class
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>objectName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The specified openbiz controller name</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ObjectService.js.html">services/ObjectService.js</a>, <a href="ObjectService.js.html#line63">line 63</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="openbiz.objects.Controller.html">openbiz.objects.Controller</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>//below code is how to get a instance of "cubi.user.UserController" class
+var myController = openbiz.getController("cubi.user.UserController");
+//then you can access methods of our controlelrs
+myController.ensureExists();</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getModel"><span class="type-signature">&lt;static> </span>getModel<span class="signature">(objectName)</span><span class="type-signature"> &rarr; {mongoose.Model}</span></h4>
     
     
 </dt>
@@ -219,7 +362,7 @@ Used for get specified Openbiz class
             
             
             
-            <td class="description last"></td>
+            <td class="description last">The specified data model name</td>
         </tr>
 	
 	
@@ -282,7 +425,7 @@ Used for get specified Openbiz class
 	</dt>
 	<dd>
 		
-<span class="param-type"><a href="openbiz.objects.Controller.html">openbiz.objects.Controller</a></span>
+<span class="param-type">mongoose.Model</span>
 
 
 	</dd>
@@ -295,6 +438,300 @@ Used for get specified Openbiz class
         
     <pre class="prettyprint"><code>//below code is how to get a instance of "cubi.user.User" model
 var userModel = openbiz.getModel("cubi.user.User");</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getPolicy"><span class="type-signature">&lt;static> </span>getPolicy<span class="signature">(policyName)</span><span class="type-signature"> &rarr; {function}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get specified openbiz policy middle-ware function
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>policyName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The specified policy middle-ware name</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ObjectService.js.html">services/ObjectService.js</a>, <a href="ObjectService.js.html#line98">line 98</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">function</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>//below code is how to get the middle-ware of "cubi.user.ensureSomething" function
+var something = openbiz.getPolicy("cubi.user.ensureSomething");</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getRole"><span class="type-signature">&lt;static> </span>getRole<span class="signature">(roleName)</span><span class="type-signature"> &rarr; {array.&lt;string>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        Get specified openbiz pre-defined system role
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>roleName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last">The specified system role name</td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        <a href="ObjectService.js.html">services/ObjectService.js</a>, <a href="ObjectService.js.html#line137">line 137</a>
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    Array of permission names,
+                 the permission could be used by <a href="openbiz.policies.html#ensurePermission">openbiz.policies.ensurePermission</a> middle-ware for protect resource access
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">array.&lt;string></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>//below code is how to get the role named "cubi-admin"
+var cubiAdmin = openbiz.getRole("cubi-admin");
+
+//cubiAdmin will looks like below
+// [
+//   "cubi-user-manage",
+//   "cubi-contact-manage",
+//   "cubi-account-manage"
+// ]</code></pre>
 
     
 </dd>
@@ -321,7 +758,7 @@ var userModel = openbiz.getModel("cubi.user.User");</code></pre>
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Sun Dec 22 2013 14:36:29 GMT+0700 (ICT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Sun Dec 22 2013 15:25:43 GMT+0700 (ICT)
 </footer>
 
 <script> prettyPrint(); </script>
