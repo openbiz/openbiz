@@ -57,8 +57,27 @@ module.exports = function(app)
 	{
 		apps: {},
 		appRoot: path.dirname(__dirname),
+        /**
+         * A context reference for express app.
+         * Just in case of if need to access express's method
+         * @memberof openbiz
+         * @type {express}
+         * @example
+         * //below sample shows how to access some express app's setting
+         * //lets say we have setup some setting in express app
+         * app.set('project-name', "My greate openbiz powered project! ");
+         * //init openbiz system
+         * var openbiz = require('openbiz')(app);
+         *
+         * ...
+         *
+         * in some other files if you want to access it
+         * var projectName = openbiz.context.get('project-name');
+         */
 		context: app,
-        /** @namespace openbiz.loaders */
+        /**
+         * Namespace of Openbiz loader classes
+         * @namespace openbiz.loaders */
 		loaders:
 		{			
 			ModuleLoader: 	 require("./loaders/ModuleLoader"),
@@ -67,7 +86,9 @@ module.exports = function(app)
 			RoleLoader: 	 require("./loaders/RoleLoader"),
 			AppLoader: 		 require("./loaders/AppLoader")
 		},
-        /** @namespace openbiz.objects */
+        /**
+         * Namespace of Openbiz base object classes
+         * @namespace openbiz.objects */
 		objects:
 		{
 			Application: 	 require("./objects/Application"),
@@ -75,69 +96,115 @@ module.exports = function(app)
 			Controller:  	 require("./objects/Controller"),
 			Object: 	 	 require("./objects/Object")
 		},
-        /** @namespace openbiz.controllers */
+        /**
+         * Namespace of Openbiz ready to use controller classes
+         * @namespace openbiz.controllers */
 		controllers:
 		{
 			ModelController: require("./controllers/ModelController")
 		},
-        /** @namespace openbiz.policies */
+        /**
+         * Namespace of Openbiz ready to use route middle-ware policy classes
+         * @namespace openbiz.policies */
 		policies:
 		{
 			ensurePermission: require("./policies/ensurePermission")
 		},
-        /** @namespace openbiz.routers */
+        /**
+         * Namespace of Openbiz ready to use router classes
+         * @namespace openbiz.routers */
         routers:
         {
             ModelRouter:     require("./routers/ModelRouter")
         },
+        /**
+         * This is an alias of {@link openbiz.services.ObjectService.getModel}
+         * @memberof openbiz
+         * @method
+         * @see {@link openbiz.services.ObjectService.getModel}
+         */
 		getModel: 			 require("./services/ObjectService").getModel,
+
+        /**
+         * This is an alias of {@link openbiz.services.ObjectService.getController}
+         * @memberof openbiz
+         * @method
+         * @see {@link openbiz.services.ObjectService.getController}
+         */
 		getController: 		 require("./services/ObjectService").getController,
+
+
+        /**
+         * This is an alias of {@link openbiz.services.ObjectService.getPolicy}
+         * @memberof openbiz
+         * @method
+         * @see {@link openbiz.services.ObjectService.getPolicy}
+         */
 		getPolicy: 			 require("./services/ObjectService").getPolicy,
+
+
+        /**
+         * This is an alias of {@link openbiz.services.ObjectService.getRole}
+         * @memberof openbiz
+         * @method
+         * @see {@link openbiz.services.ObjectService.getRole}
+         */
 		getRole: 			 require("./services/ObjectService").getRole
 	};
 
     global.openbiz = openbiz;
 	//setup methods alias
     /**
+     * This is an alias of {@link openbiz.loaders.AppLoader}
      * @memberof openbiz
      * @method
-     * @return {AppLoader}  returns the Apploader object
+     * @see {@link openbiz.loaders.AppLoader}
      */
     openbiz.loadAppToRoute 	= openbiz.loaders.AppLoader;
+
     /**
-     * @memberof openbiz
+     * This is an alias of {@link openbiz.policies.ensurePermission}
      * @method
-     * @return {ensurePermission}  returns default openbiz middle-ware
-     *                             that will ensure user has specified permission
+     * @memberof openbiz
+     * @see {@link openbiz.policies.ensurePermission}
      */
 	openbiz.ensurePermission = openbiz.policies.ensurePermission;
 
 	//setup classes alias
     /**
-     * This is an easy way to access openbiz.objects.Object when
-     * you want to create a Object with extend() feature
+     * This is an alias of {@link openbiz.objects.Object}
      * @memberof openbiz
-     * @type {!Object}
-     * @example
-     * // create a new empty object and inherit from openbiz.Objbect
-     * var myObject = openbiz.Object.extend();
-     *
-     * @example
-     * // create a new object and inherit from openbiz.Objbect with some initialize properties
-     * var myObject = openbiz.Object.extend({
-     *    propertyA : defaultValue1,
-     *    propertyB : defaultValue2,
-     *    methodA : function(){
-     *      //some logic here
-     *    }
-     * });
+     * @see {@link openbiz.objects.Object}
      */
 	openbiz.Object 			= openbiz.objects.Object;
 
+    /**
+     * This is an alias of {@link openbiz.objects.Application}
+     * @memberof openbiz
+     * @see {@link openbiz.objects.Application}
+     */
 	openbiz.Application 	= openbiz.objects.Application;
+
+    /**
+     * This is an alias of {@link openbiz.objects.Module}
+     * @memberof openbiz
+     * @see {@link openbiz.objects.Module}
+     */
 	openbiz.Module 			= openbiz.objects.Module;
-	openbiz.Controller		= openbiz.objects.Controller;	
-	openbiz.ModelController = openbiz.controllers.ModelController;
+
+    /**
+     * This is an alias of {@link openbiz.objects.Controller}
+     * @memberof openbiz
+     * @see {@link openbiz.objects.Controller}
+     */
+	openbiz.Controller		= openbiz.objects.Controller;
+
+    /**
+     * This is an alias of {@link openbiz.controllers.ModelController}
+     * @memberof openbiz
+     * @see {@link openbiz.controllers.ModelController}
+     */
+    openbiz.ModelController = openbiz.controllers.ModelController;
 
 	return global.openbiz;
 };</code></pre>
@@ -150,13 +217,13 @@ module.exports = function(app)
 </div>
 
 <nav>
-    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-openbiz.html">openbiz</a></li></ul><h3>Classes</h3><ul><li><a href="openbiz.objects.Application.html">Application</a></li><li><a href="openbiz.objects.Controller.html">Controller</a></li><li><a href="openbiz.objects.Module.html">Module</a></li><li><a href="openbiz.objects.Object.html">Object</a></li><li><a href="openbiz.routers.ModelRouter.html">ModelRouter</a></li></ul><h3>Namespaces</h3><ul><li><a href="openbiz.html">openbiz</a></li><li><a href="openbiz.controllers.html">controllers</a></li><li><a href="openbiz.loaders.html">loaders</a></li><li><a href="openbiz.objects.html">objects</a></li><li><a href="openbiz.policies.html">policies</a></li><li><a href="openbiz.routers.html">routers</a></li></ul>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-openbiz.html">openbiz</a></li></ul><h3>Classes</h3><ul><li><a href="openbiz.objects.Application.html">Application</a></li><li><a href="openbiz.objects.Controller.html">Controller</a></li><li><a href="openbiz.objects.Module.html">Module</a></li><li><a href="openbiz.objects.Object.html">Object</a></li><li><a href="openbiz.routers.ModelRouter.html">ModelRouter</a></li><li><a href="openbiz.services.ObjectService.html">ObjectService</a></li></ul><h3>Namespaces</h3><ul><li><a href="openbiz.html">openbiz</a></li><li><a href="openbiz.controllers.html">controllers</a></li><li><a href="openbiz.loaders.html">loaders</a></li><li><a href="openbiz.objects.html">objects</a></li><li><a href="openbiz.policies.html">policies</a></li><li><a href="openbiz.routers.html">routers</a></li></ul>
 </nav>
 
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Sun Dec 22 2013 09:44:42 GMT+0700 (ICT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Sun Dec 22 2013 14:36:29 GMT+0700 (ICT)
 </footer>
 
 <script> prettyPrint(); </script>
