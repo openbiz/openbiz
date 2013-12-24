@@ -25,7 +25,7 @@ If you are a node.js developer as me, I believe you must have these hard time to
 and have to manually map them into your app routes. So normally if you just done your data model, the work is just begin, but with openbiz we make it almost close to complete.
 Let's see some samples.
 
-Let's say you already have a mongoose based data model called User.js, Then your UserController would be just simple like this:
+Let's say you already have a mongoose based data model called User.js, Then your UserController.js would be just simple like below, then all CRUD logic will automaticaly created:
 
 ```javascript
 module.exports = function(app){
