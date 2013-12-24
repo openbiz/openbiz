@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Module: openbiz</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Module: openbiz</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+    openbiz
+    </h2>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+        
+<dt>
+    <h4 class="name" id="module:openbiz"><span class="type-signature"></span>require("openbiz")<span class="signature">(app, options)</span><span class="type-signature"> &rarr; {<a href="openbiz.html">openbiz</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Loads and inits the Openbiz system assign an instance of
+expressjs app as the context of openbiz.</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>app</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">express</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>An instance of express app</p></td>
+        </tr>
+	
+	
+	
+        <tr>
+            
+                <td class="name"><code>options</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">object.&lt;string, object></span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>setting for init openbiz environment, more detail please see sample</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        openbiz.js, line 28
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Openbiz system environment</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="openbiz.html">openbiz</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>//config options sample
+var options =
+{
+     db:{
+         uri:'localhost/myAppDB'
+     }
+}
+var openbiz = require('openbiz')(app,config);</code></pre>
+
+    
+</dd>
+
+    
+    
+    
+        
+        
+        
+<dl class="details">
+    
+        
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>4.0.0</li></ul></dd>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:jixian@openbiz.me">Jixian Wang</a></li>
+        
+            <li><a href="mailto:rocky@openbiz.me">Rocky Swen</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+    <dt class="tag-copyright">Copyright:</dt>
+    <dd class="tag-copyright"><ul class="dummy"><li><a href="http://www.openbiz.me">Openbiz LLC</a></li></ul></dd>
+    
+    
+    
+    <dt class="tag-license">License:</dt>
+    <dd class="tag-license"><ul class="dummy"><li><a href="http://opensource.org/licenses/BSD-3-Clause">BSD License</a></li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        openbiz.js, line 1
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+        
+        
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-openbiz.html">openbiz</a></li></ul><h3>Classes</h3><ul><li><a href="openbiz.controllers.ModelController.html">ModelController</a></li><li><a href="openbiz.objects.Application.html">Application</a></li><li><a href="openbiz.objects.Controller.html">Controller</a></li><li><a href="openbiz.objects.Module.html">Module</a></li><li><a href="openbiz.objects.Object.html">Object</a></li><li><a href="openbiz.routers.ModelRouter.html">ModelRouter</a></li><li><a href="openbiz.services.ObjectService.html">ObjectService</a></li></ul><h3>Namespaces</h3><ul><li><a href="openbiz.html">openbiz</a></li><li><a href="openbiz.controllers.html">controllers</a></li><li><a href="openbiz.loaders.html">loaders</a></li><li><a href="openbiz.objects.html">objects</a></li><li><a href="openbiz.policies.html">policies</a></li><li><a href="openbiz.routers.html">routers</a></li><li><a href="openbiz.services.html">services</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Tue Dec 24 2013 20:25:21 GMT+0700 (ICT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

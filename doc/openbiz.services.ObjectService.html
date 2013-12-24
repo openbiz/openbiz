@@ -1,0 +1,827 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Class: ObjectService</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Class: ObjectService</h1>
+    
+    
+
+
+
+<section>
+    
+<header>
+    <h2>
+        <span class="ancestors"><a href="openbiz.html">openbiz</a><a href="openbiz.services.html">.services</a>.</span>
+    
+    ObjectService
+    </h2>
+    
+        <div class="class-description"><p>The Object factory class.
+Used for get specified Openbiz class.</p>
+
+<p>The methods of ObjectService are extensions for  <a href="openbiz.objects.Application.html">openbiz.objects.Application</a>,
+please never call this directly by ObjectService.</p>
+
+<p>If need to call this method, you have to use javascript&#39;s function.apply(applicationPointer,params)
+please see sample.</p></div>
+    
+</header>  
+
+<article>
+    <div class="container-overview">
+    
+    
+    
+        
+<dt>
+    <h4 class="name" id="ObjectService"><span class="type-signature"></span>new ObjectService<span class="signature">()</span><span class="type-signature"> &rarr; {<a href="openbiz.services.ObjectService.html">openbiz.services.ObjectService</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    <dt class="tag-version">Version:</dt>
+    <dd class="tag-version"><ul class="dummy"><li>4.0.0</li></ul></dd>
+    
+    
+    
+
+    
+    
+    
+    
+    
+    <dt class="tag-author">Author:</dt>
+    <dd class="tag-author">
+        <ul>
+            <li><a href="mailto:jixian@openbiz.me">Jixian Wang</a></li>
+        </ul>
+    </dd>
+    
+    
+    
+    <dt class="tag-copyright">Copyright:</dt>
+    <dd class="tag-copyright"><ul class="dummy"><li><a href="http://www.openbiz.me">Openbiz LLC</a></li></ul></dd>
+    
+    
+    
+    <dt class="tag-license">License:</dt>
+    <dd class="tag-license"><ul class="dummy"><li><a href="http://opensource.org/licenses/BSD-3-Clause">BSD License</a></li></ul></dd>
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        services/ObjectService.js, line 1
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-todo">To Do:</dt>
+    <dd class="tag-todo">
+        <ul>
+            <li>change example codes</li>
+        </ul>
+    </dd>
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="openbiz.services.ObjectService.html">openbiz.services.ObjectService</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Example</h5>
+        
+    <pre class="prettyprint"><code>//if you want to call this method directly , please try this way
+require('openbiz/ObjectService').getModel.apply(applicationPointer,objectName)</code></pre>
+
+    
+</dd>
+
+    
+    </div>
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+        <h3 class="subsection-title">Methods</h3>
+        
+        <dl>
+            
+<dt>
+    <h4 class="name" id="getController"><span class="type-signature">&lt;static> </span>getController<span class="signature">(objectName)</span><span class="type-signature"> &rarr; {<a href="openbiz.objects.Controller.html">openbiz.objects.Controller</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Get specified openbiz controller class</p>
+
+<p>This method it part of <a href="openbiz.objects.Application.html">openbiz.objects.Application</a>,
+please never call this directly by ObjectService</p>
+
+<p>if need to call this method, you have to use javascript&#39;s function.apply(applicationPointer,params)
+please see sample</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>objectName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The specified openbiz controller name</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        services/ObjectService.js, line 130
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="openbiz.objects.Controller.html">openbiz.objects.Controller</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>//below code is how to get a instance of "cubi.user.UserController" class
+var myController = openbiz.getController("cubi.user.UserController");
+//then you can access methods of our controlelrs
+myController.ensureExists();</code></pre>
+
+    <pre class="prettyprint"><code>//if you want to call this method directly , please try this way
+require('openbiz/services/ObjectService').getController.apply(applicationPointer,objectName)</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getModel"><span class="type-signature">&lt;static> </span>getModel<span class="signature">(objectName)</span><span class="type-signature"> &rarr; {<a href="openbiz.objects.Controller.html">openbiz.objects.Controller</a>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Get specified openbiz data model class</p>
+
+<p>This method it part of <a href="openbiz.objects.Application.html">openbiz.objects.Application</a>,
+please never call this directly by ObjectService</p>
+
+<p>if need to call this method, you have to use javascript&#39;s function.apply(applicationPointer,params)
+please see sample</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>objectName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The specified openbiz controller name</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        services/ObjectService.js, line 56
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type"><a href="openbiz.objects.Controller.html">openbiz.objects.Controller</a></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>//below code is how to get a instance of "openbiz-cubi.user.User" class
+//cubiApp is instance of openbiz.objects.Application
+var myModel = cubiApp.getModel("User");
+//then you can access methods of this model like 'hasPermission()'
+if(myModel.hasPermission('some-permission')){
+ ...
+}</code></pre>
+
+    <pre class="prettyprint"><code>//if you want to call this method directly , please try this way
+require('openbiz/services/ObjectService').getController.apply(applicationPointer,objectName)</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getPolicy"><span class="type-signature">&lt;static> </span>getPolicy<span class="signature">(policyName)</span><span class="type-signature"> &rarr; {function}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Get specified openbiz policy middle-ware function.</p>
+
+<p>This method it part of <a href="openbiz.objects.Application.html">openbiz.objects.Application</a>,
+please never call this directly by ObjectService.</p>
+
+<p>if need to call this method, you have to use javascript&#39;s function.apply(applicationPointer,params)
+please see sample</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>policyName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The specified policy middle-ware name</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        services/ObjectService.js, line 204
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">function</span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>//below code is how to get the middle-ware of "cubi.user.ensureSomething" function
+var something = openbiz.getPolicy("cubi.user.ensureSomething");</code></pre>
+
+    <pre class="prettyprint"><code>//if you want to call this method directly , please try this way
+require('openbiz/services/ObjectService').getPolicy.apply(applicationPointer,policyName)</code></pre>
+
+    
+</dd>
+
+        
+            
+<dt>
+    <h4 class="name" id="getRole"><span class="type-signature">&lt;static> </span>getRole<span class="signature">(roleName)</span><span class="type-signature"> &rarr; {array.&lt;string>}</span></h4>
+    
+    
+</dt>
+<dd>
+    
+    
+    <div class="description">
+        <p>Get specified openbiz pre-defined system role.</p>
+
+<p>This method it part of <a href="openbiz.objects.Application.html">openbiz.objects.Application</a>,
+please never call this directly by ObjectService.</p>
+
+<p>if need to call this method, you have to use javascript&#39;s function.apply(applicationPointer,params)
+please see sample</p>
+    </div>
+    
+
+    
+    
+    
+    
+    
+        <h5>Parameters:</h5>
+        
+
+<table class="params">
+    <thead>
+	<tr>
+		
+		<th>Name</th>
+		
+		
+		<th>Type</th>
+		
+		
+		
+		
+		
+		<th class="last">Description</th>
+	</tr>
+	</thead>
+	
+	<tbody>
+	
+	
+        <tr>
+            
+                <td class="name"><code>roleName</code></td>
+            
+            
+            <td class="type">
+            
+                
+<span class="param-type">string</span>
+
+
+            
+            </td>
+            
+            
+            
+            
+            
+            <td class="description last"><p>The specified system role name</p></td>
+        </tr>
+	
+	
+	</tbody>
+</table>
+    
+    
+    
+<dl class="details">
+    
+        
+    
+    
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    <dt class="tag-source">Source:</dt>
+    <dd class="tag-source"><ul class="dummy"><li>
+        services/ObjectService.js, line 252
+    </li></ul></dd>
+    
+    
+    
+    
+    
+    
+    
+</dl>
+
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    <h5>Returns:</h5>
+    
+            
+<div class="param-desc">
+    <p>Array of permission names,
+                 the permission could be used by <a href="openbiz.policies.html#ensurePermission">openbiz.policies.ensurePermission</a> middle-ware for protect resource access</p>
+</div>
+
+
+
+<dl>
+	<dt>
+		Type
+	</dt>
+	<dd>
+		
+<span class="param-type">array.&lt;string></span>
+
+
+	</dd>
+</dl>
+
+        
+    
+    
+        <h5>Examples</h5>
+        
+    <pre class="prettyprint"><code>//below code is how to get the role named "cubi-admin"
+var cubiAdmin = openbiz.getRole("cubi-admin");
+
+//cubiAdmin will looks like below
+// [
+//   "cubi-user-manage",
+//   "cubi-contact-manage",
+//   "cubi-account-manage"
+// ]</code></pre>
+
+    <pre class="prettyprint"><code>//if you want to call this method directly , please try this way
+require('openbiz/services/ObjectService').getRole.apply(applicationPointer,roleName)</code></pre>
+
+    
+</dd>
+
+        </dl>
+    
+    
+    
+    
+    
+</article>
+
+</section>  
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-openbiz.html">openbiz</a></li></ul><h3>Classes</h3><ul><li><a href="openbiz.controllers.ModelController.html">ModelController</a></li><li><a href="openbiz.objects.Application.html">Application</a></li><li><a href="openbiz.objects.Controller.html">Controller</a></li><li><a href="openbiz.objects.Module.html">Module</a></li><li><a href="openbiz.objects.Object.html">Object</a></li><li><a href="openbiz.routers.ModelRouter.html">ModelRouter</a></li><li><a href="openbiz.services.ObjectService.html">ObjectService</a></li></ul><h3>Namespaces</h3><ul><li><a href="openbiz.html">openbiz</a></li><li><a href="openbiz.controllers.html">controllers</a></li><li><a href="openbiz.loaders.html">loaders</a></li><li><a href="openbiz.objects.html">objects</a></li><li><a href="openbiz.policies.html">policies</a></li><li><a href="openbiz.routers.html">routers</a></li><li><a href="openbiz.services.html">services</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Tue Dec 24 2013 20:25:21 GMT+0700 (ICT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

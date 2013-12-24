@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: services/ObjectService.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: services/ObjectService.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * The Object factory class.
+ * Used for get specified Openbiz class.
+ *
+ * The methods of ObjectService are extensions for  {@link openbiz.objects.Application},
+ * please never call this directly by ObjectService
+ * if need to call this method, you have to use javascript's function.apply(applicationPointer,params)
+ * please see sample.
+ *
+ * @class ObjectService
+ * @static
+ * @returns {openbiz.services.ObjectService}
+ * @memberof openbiz.services
+ * @author Jixian Wang &lt;jixian@openbiz.me>
+ * @version 4.0.0
+ * @copyright {@link http://www.openbiz.me|Openbiz LLC}
+ * @license {@link http://opensource.org/licenses/BSD-3-Clause|BSD License}
+ * @example
+ * //if you want to call this method directly , please try this way
+ * require('openbiz/ObjectService').getModel.apply(applicationPointer,objectName)
+ */
+
+"use strict";
+var fs = require("fs"),
+	path = require("path");
+
+
+module.exports = {
+    getModel:function(objectName)
+	{
+        var app = this;
+        var objectName = objectName.split(".");
+        var obj = {};
+        try
+        {
+            switch(objectName.length){
+                case 1:
+                    for(var module in app.modules)
+                    {
+                        if(app.modules[module].models.hasOwnProperty(objectName[0]))
+                        {
+                            objectName[1]=objectName[0];
+                            objectName[0]=module;
+                            break;
+                        }
+                    }
+                    break;
+            }
+            obj = app.modules[objectName[0]].models[objectName[1]];
+        }
+        catch(e)
+        {
+            switch(objectName.length){
+                case 1:
+                    var modulePath = path.join(app._path,"modules");
+                    fs.readdirSync(modulePath).forEach(function(moduleName){
+                        var objFilePath = path.join(app._path,"modules",moduleName,"models",objectName[0]);
+                        if(fs.existsSync(objFilePath+".js"))
+                        {
+                            var obj = require(objFilePath)(app);
+                            if(typeof app.modules[moduleName] != "object") app.modules[moduleName]={};
+                            if(typeof app.modules[moduleName].models != "object") app.modules[moduleName].models={};
+                            app.modules[moduleName].models[objectName[0]] = obj;
+                        }
+                    });
+                    break;
+                case 2:
+                    var objFilePath = path.join(app._path,"modules",objectName[0],"models",objectName[1]);
+                    if(fs.existsSync(objFilePath+".js"))
+                    {
+                        var obj = require(objFilePath)(app);
+                        if(typeof app.modules[objectName[0]] != "object") app.modules[objectName[0]]={};
+                        if(typeof app.modules[objectName[0]].models != "object") app.modules[objectName[0]].models={};
+                        app.modules[objectName[0]].models[objectName[1]] = obj;
+                    }
+                    break;
+            }
+        }
+        return obj;
+	},
+
+    /**
+     * Get specified openbiz controller class
+     * This method it part of {@link openbiz.objects.Application},
+     * please never call this directly by ObjectService
+     * if need to call this method, you have to use javascript's function.apply(applicationPointer,params)
+     * please see sample
+     * @memberof openbiz.services.ObjectService
+     * @param {string} objectName - The specified openbiz controller name
+     * @returns {openbiz.objects.Controller}
+     * @example
+     * //below code is how to get a instance of "cubi.user.UserController" class
+     * var myController = openbiz.getController("cubi.user.UserController");
+     * //then you can access methods of our controlelrs
+     * myController.ensureExists();
+     * @example
+     * //if you want to call this method directly , please try this way
+     * require('openbiz/ObjectService').getController.apply(applicationPointer,objectName)
+     */
+    getController:function(objectName)
+	{
+        var app = this;
+        var objectName = objectName.split(".");
+        var obj = {};
+        try
+        {
+            switch(objectName.length){
+                case 1:
+                    for(var module in app.modules)
+                    {
+                        if(app.modules[module].controllers.hasOwnProperty(objectName[0]))
+                        {
+                            objectName[1]=objectName[0];
+                            objectName[0]=module;
+                            break;
+                        }
+                    }
+                    break;
+            }
+            obj = app.modules[objectName[0]].controllers[objectName[1]];
+        }
+        catch(e)
+        {
+            switch(objectName.length){
+                case 1:
+                    var modulePath = path.join(app._path,"modules");
+                    fs.readdirSync(modulePath).forEach(function(moduleName){
+                        var objFilePath = path.join(app._path,"modules",moduleName,"controllers",objectName[0]);
+                        if(fs.existsSync(objFilePath+".js"))
+                        {
+                            var objClass = require(objFilePath)(app);
+                            var obj = new objClass();
+                            if(typeof app.modules[moduleName] != "object") app.modules[moduleName]={};
+                            if(typeof app.modules[moduleName].controllers != "object") app.modules[moduleName].controllers={};
+                            app.modules[moduleName].controllers[objectName[0]] = obj;
+                        }
+                    });
+                    break;
+                case 2:
+                    var objFilePath = path.join(app._path,"modules",objectName[0],"controllers",objectName[1]);
+                    if(fs.existsSync(objFilePath+".js"))
+                    {
+                        var objClass = require(objFilePath)(app);
+                        var obj = new objClass();
+                        if(typeof app.modules[objectName[0]] != "object") app.modules[objectName[0]]={};
+                        if(typeof app.modules[objectName[0]].controllers != "object") app.modules[objectName[0]].controllers={};
+                        app.modules[objectName[0]].controllers[objectName[1]] = obj;
+                    }
+                    break;
+            }
+        }
+		return obj;
+	},
+
+
+    /**
+     * Get specified openbiz policy middle-ware function
+     * This method it part of {@link openbiz.objects.Application},
+     * please never call this directly by ObjectService
+     * if need to call this method, you have to use javascript's function.apply(applicationPointer,params)
+     * please see sample
+     * @memberof openbiz.services.ObjectService
+     * @param {string} policyName - The specified policy middle-ware name
+     * @returns {function}
+     * @example
+     * //below code is how to get the middle-ware of "cubi.user.ensureSomething" function
+     * var something = openbiz.getPolicy("cubi.user.ensureSomething");
+     * @example
+     * //if you want to call this method directly , please try this way
+     * require('openbiz/ObjectService').getPolicy.apply(applicationPointer,policyName)
+     */
+    getPolicy:function(policyName)
+	{
+        var app = this;
+		var objectName = policyName.split(".");
+		var obj = {};
+		try
+		{
+			obj = app.policies[objectName[1]];
+		}
+		catch(e)
+		{					
+			var objFilePath = path.join(app._path,"policies",policyName[0]);
+			if(fs.existsSync(objFilePath+".js"))
+			{
+				obj = require(objFilePath);				
+				if(typeof app.policies != "object") app.policies={};
+				app.policies[objectName[1]] = obj;
+			}
+		}
+		return obj;
+	},
+
+    /**
+     * Get specified openbiz pre-defined system role
+     * This method it part of {@link openbiz.objects.Application},
+     * please never call this directly by ObjectService
+     * if need to call this method, you have to use javascript's function.apply(applicationPointer,params)
+     * please see sample
+     * @memberof openbiz.services.ObjectService
+     * @param {string} roleName - The specified system role name
+     * @returns {array.&lt;string>} Array of permission names,
+     *                  the permission could be used by {@link openbiz.policies.ensurePermission} middle-ware for protect resource access
+     * @example
+     * //below code is how to get the role named "cubi-admin"
+     * var cubiAdmin = openbiz.getRole("cubi-admin");
+     *
+     * //cubiAdmin will looks like below
+     * // [
+     * //   "cubi-user-manage",
+     * //   "cubi-contact-manage",
+     * //   "cubi-account-manage"
+     * // ]
+     * @example
+     * //if you want to call this method directly , please try this way
+     * require('openbiz/ObjectService').getRole.apply(applicationPointer,roleName)
+     */
+    getRole:function(roleName)
+	{
+        var app = this;
+		var role = [];
+		try
+		{
+            role = app.roles[roleName];
+		}
+		catch(e)
+		{
+			var objFilePath = path.join(app._path,"roles",roleName);
+			if(fs.existsSync(objFilePath+".js"))
+			{
+				role = require(objFilePath);
+                if(typeof app.roles != "object") app.roles={};
+				app.roles[roleName]= role;
+			}
+		}
+		return role;
+	}
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-openbiz.html">openbiz</a></li></ul><h3>Classes</h3><ul><li><a href="openbiz.objects.Application.html">Application</a></li><li><a href="openbiz.objects.Controller.html">Controller</a></li><li><a href="openbiz.objects.Module.html">Module</a></li><li><a href="openbiz.objects.Object.html">Object</a></li><li><a href="openbiz.routers.ModelRouter.html">ModelRouter</a></li><li><a href="openbiz.services.ObjectService.html">ObjectService</a></li></ul><h3>Namespaces</h3><ul><li><a href="openbiz.html">openbiz</a></li><li><a href="openbiz.controllers.html">controllers</a></li><li><a href="openbiz.loaders.html">loaders</a></li><li><a href="openbiz.objects.html">objects</a></li><li><a href="openbiz.policies.html">policies</a></li><li><a href="openbiz.routers.html">routers</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Tue Dec 24 2013 18:44:32 GMT+0700 (ICT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

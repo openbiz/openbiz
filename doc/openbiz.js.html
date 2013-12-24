@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: openbiz.js</title>
+    
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+    
+    <h1 class="page-title">Source: openbiz.js</h1>
+    
+    
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source"><code>/**
+ * @module openbiz
+ * @author Jixian Wang &lt;jixian@openbiz.me>
+ * @author Rocky Swen &lt;rocky@openbiz.me>
+ * @version 4.0.0
+ * @copyright {@link http://www.openbiz.me|Openbiz LLC}
+ * @license {@link http://opensource.org/licenses/BSD-3-Clause|BSD License}
+ */
+"use strict";
+var path=require('path'),
+    mongoose = require('mongoose');
+/**
+ * Loads and inits the Openbiz system assign an instance of
+ * expressjs app as the context of openbiz.
+ * @param {express} app - An instance of express app
+ * @param {object.&lt;string,object>} options - setting for init openbiz environment, more detail please see sample
+ * @returns {!openbiz} Openbiz system environment
+ * @example
+ * //config options sample
+ * var options =
+ * {
+ *      db:{
+ *          uri:'localhost/myAppDB'
+ *      }
+ * }
+ * var openbiz = require('openbiz')(app,config);
+ */
+module.exports = function(app,options)
+{
+    console.log('init database connection ...');
+    //setup mongoose
+    var db = mongoose.createConnection(options.db.uri);
+    db.on('error', console.error.bind(console, 'mongoose connection error: '));
+    db.once('open', function () {
+        //and... we have a data store
+        console.log("mongo database server connected.");
+    });
+
+
+    console.log('init openbiz system ...');
+    /**
+     * @namespace openbiz
+     * @author Jixian Wang &lt;jixian@openbiz.me>
+     * @version 4.0.0
+     * @copyright {@link http://www.openbiz.me|Openbiz LLC}
+     * @license {@link http://opensource.org/licenses/BSD-3-Clause|BSD License}
+     */
+    var openbiz =
+	{
+        /**
+         * The container of loaded openbiz based application
+         * it will used for internnally reference to app, used by {@link openbiz.getApp|openbiz::getApp(appName)} function
+         * @memberof openbiz
+         * @type {object.&lt;string,openbiz.objects.Application>}
+         */
+		apps: {},
+        /**
+         * The root folder of referceing app's root path.
+         * @memberof openbiz
+         * @property appRoot
+         * @type string
+         * @example
+         * // if your have an instances of openbiz then below code can help you to get openbiz system's root path
+         * var systemRootPath = openbiz.appRoot;
+         */
+		appRoot: path.dirname(require.main.filename),
+        /**
+         * A context reference for express app.
+         * Just in case of if need to access express's method
+         * @memberof openbiz
+         * @type {express}
+         * @example
+         * //below sample shows how to access some express app's setting
+         * //lets say we have setup some setting in express app
+         * app.set('project-name', "My greate openbiz powered project! ");
+         * //init openbiz system
+         * var openbiz = require('openbiz')(app);
+         *
+         * ...
+         *
+         * in some other files if you want to access it
+         * var projectName = openbiz.context.get('project-name');
+         */
+		context: app,
+        db: db,
+        mongoose: mongoose,
+        /**
+         * Namespace of Openbiz loader classes
+         * @namespace openbiz.loaders */
+		loaders:
+		{			
+			ModuleLoader: 	 require("./loaders/ModuleLoader"),
+			PolicyLoader:    require("./loaders/PolicyLoader"),
+			RouteLoader: 	 require("./loaders/RouteLoader"),
+			RoleLoader: 	 require("./loaders/RoleLoader")
+		},
+        /**
+         * Namespace of Openbiz base object classes
+         * @namespace openbiz.objects */
+		objects:
+		{
+			Application: 	 require("./objects/Application"),
+			Module: 	 	 require("./objects/Module"),
+			Controller:  	 require("./objects/Controller"),
+			Object: 	 	 require("./objects/Object")
+		},
+        /**
+         * Namespace of Openbiz ready to use controller classes
+         * @namespace openbiz.controllers */
+		controllers:
+		{
+			ModelController: require("./controllers/ModelController")
+		},
+        /**
+         * Namespace of Openbiz ready to use route middle-ware policy classes
+         * @namespace openbiz.policies */
+		policies:
+		{
+			ensurePermission: require("./policies/ensurePermission")
+		},
+        /**
+         * Namespace of Openbiz ready to use router classes
+         * @namespace openbiz.routers */
+        routers:
+        {
+            ModelRouter:     require("./routers/ModelRouter")
+        },
+
+        /**
+         * get a loaded openbiz application instances
+         * @memberof openbiz
+         * @method
+         * @param {string} appName - name of a loaded openbiz application
+         * @return {?openbiz.objects.Application} the instance of specified openbiz application
+         * @instance
+         * @example
+         * //if you already loaded the openbiz-cubi app
+         * var cubiApp = openbiz.getApp('openbiz-cubi');
+         * var myPoclicyName = cubiApp.getPolicy('policyName');
+         */
+		getApp:function(appName){
+            if(this.apps.hasOwnProperty(appName)){
+                return this.apps[appName];
+            }else{
+                return null;
+            }
+        },
+	};
+
+	//setup methods alias
+
+    /**
+     * This is an alias of {@link openbiz.policies.ensurePermission}
+     * @method
+     * @memberof openbiz
+     * @see {@link openbiz.policies.ensurePermission}
+     */
+	openbiz.ensurePermission = openbiz.policies.ensurePermission;
+
+	//setup classes alias
+    /**
+     * This is an alias of {@link openbiz.objects.Object}
+     * @memberof openbiz
+     * @see {@link openbiz.objects.Object}
+     */
+	openbiz.Object 			= openbiz.objects.Object;
+
+    /**
+     * This is an alias of {@link openbiz.objects.Application}
+     * @memberof openbiz
+     * @see {@link openbiz.objects.Application}
+     */
+	openbiz.Application 	= openbiz.objects.Application;
+
+    /**
+     * This is an alias of {@link openbiz.objects.Module}
+     * @memberof openbiz
+     * @see {@link openbiz.objects.Module}
+     */
+	openbiz.Module 			= openbiz.objects.Module;
+
+    /**
+     * This is an alias of {@link openbiz.objects.Controller}
+     * @memberof openbiz
+     * @see {@link openbiz.objects.Controller}
+     */
+	openbiz.Controller		= openbiz.objects.Controller;
+
+    /**
+     * This is an alias of {@link openbiz.controllers.ModelController}
+     * @memberof openbiz
+     * @see {@link openbiz.controllers.ModelController}
+     */
+    openbiz.ModelController = openbiz.controllers.ModelController;
+
+    app.openbiz = openbiz;
+	return openbiz;
+};</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Index</a></h2><h3>Modules</h3><ul><li><a href="module-openbiz.html">openbiz</a></li></ul><h3>Classes</h3><ul><li><a href="openbiz.objects.Application.html">Application</a></li><li><a href="openbiz.objects.Controller.html">Controller</a></li><li><a href="openbiz.objects.Module.html">Module</a></li><li><a href="openbiz.objects.Object.html">Object</a></li><li><a href="openbiz.routers.ModelRouter.html">ModelRouter</a></li><li><a href="openbiz.services.ObjectService.html">ObjectService</a></li></ul><h3>Namespaces</h3><ul><li><a href="openbiz.html">openbiz</a></li><li><a href="openbiz.controllers.html">controllers</a></li><li><a href="openbiz.loaders.html">loaders</a></li><li><a href="openbiz.objects.html">objects</a></li><li><a href="openbiz.policies.html">policies</a></li><li><a href="openbiz.routers.html">routers</a></li></ul>
+</nav>
+
+<br clear="both">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Tue Dec 24 2013 18:44:32 GMT+0700 (ICT)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
