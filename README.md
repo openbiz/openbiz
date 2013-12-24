@@ -27,13 +27,13 @@ Let's see some samples.
 
 Let's say you already have a mongoose based data model called User.js, Then your UserController would be just simple like this:
 
->
->module.exports = function(app){
->    return app.openbiz.ModelController.extend({
->        _model: app.getModel('User')
->    });
->}
->
+```javascript
+module.exports = function(app){
+    return app.openbiz.ModelController.extend({
+        _model: app.getModel('User')
+    });
+}
+```
 
 The real example code you can get at openbiz-cubi project
 
