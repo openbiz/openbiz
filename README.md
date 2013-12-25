@@ -68,7 +68,7 @@ if you need helps, I suggest you go to look at their offical documents. Trust me
 ### Install openbiz framework
 ```sh
 cd /your-project-root-folder/
-node install openbiz
+npm install openbiz
 ```
 
 ### load it into your Express.js based application
