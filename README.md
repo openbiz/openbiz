@@ -65,7 +65,23 @@ First, you need to have some [node.js](http://www.nodejs.org) and [express.js](h
 if you need helps, I suggest you go to look at their offical documents. Trust me it wouldn't be hard.  :-)
 
 ### Install openbiz framework
-
+```sh
+cd /your-project-root-folder/
+node install openbiz
+```
 
 ### load it into your Express.js based application
+```javascript
+//setup the database connection
+var config = {
+    db:{
+        uri: 'localhost/myOpenbiz'
+    }
+};
+//init openbiz system
+var openbiz = require('openbiz')(app,config);
+//then you can load your app into openbiz,
+//normall you would need openbiz-cubi as a user & role management backend.
+var cubi    = require('openbiz-cubi')(openbiz).loadToRoute('/api');
+```
 
