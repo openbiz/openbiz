@@ -49,11 +49,11 @@ module.exports = function(app){
 Then just that coupon of code you will get all ready to use feature like below:
 ```
 // lets say you have mount the entire app under /api/* routes
-post /api/accounts              //for create a new account entity
-get  /api/accounts/:id          //for get a account entity by ID
-put  /api/accounts/:id          //for update account properties
-delete  /api/accounts/:id       //for delete specified account
-post    /api/accounts/search    //for search account by specified request payload
+post    /api/accounts               //for create a new account entity
+get     /api/accounts/:id           //for get a account entity by ID
+put     /api/accounts/:id           //for update account properties
+delete  /api/accounts/:id           //for delete specified account
+post    /api/accounts/search        //for search account by specified request payload
 ```
 
 The real example code you can get at openbiz-cubi project. For more details please follow our documents.
@@ -72,6 +72,7 @@ node install openbiz
 
 ### load it into your Express.js based application
 ```javascript
+//app is an instance of express.js app
 //setup the database connection
 var config = {
     db:{
