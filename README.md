@@ -27,6 +27,7 @@ Let's see some samples.
 
 Let's say you already have a mongoose based data model called Account.js, Then your AccountController.js would be just simple like below, then all CRUD logic will automaticaly created:
 
+AccountController.js
 ```javascript
 module.exports = function(app){
     return app.openbiz.ModelController.extend({
