@@ -25,17 +25,39 @@ If you are a node.js developer as me, I believe you must have these hard time to
 and have to manually map them into your app routes. So normally if you just done your data model, the work is just begin, but with openbiz we make it almost close to complete.
 Let's see some samples.
 
-Let's say you already have a mongoose based data model called User.js, Then your UserController.js would be just simple like below, then all CRUD logic will automaticaly created:
+Let's say you already have a mongoose based data model called Account.js, Then your AccountController.js would be just simple like below, then all CRUD logic will automaticaly created:
 
 ```javascript
 module.exports = function(app){
     return app.openbiz.ModelController.extend({
-        _model: app.getModel('User')
+        _model: app.getModel('Account')
     });
 }
 ```
+routes.js
+```javascript
+module.exports = function(app){
+    var modelController = app.getController('AccountController');
+    var routePrefix = '/accounts';
+    var permission = 'cubi-user';
+    var routes = app.openbiz.ModelRouter.getDefaultRoutes(routePrefix, modelController, permission);
+    //maybe you want to add some more custom route rules here.
+    return routes;
+}
+```
 
-The real example code you can get at openbiz-cubi project
+Then just that coupon of code you will get all ready to use feature like below:
+```
+// lets say you have mount the entire app under /api/* routes
+post /api/accounts              //for create a new account entity
+get  /api/accounts/:id          //for get a account entity by ID
+put  /api/accounts/:id          //for update account properties
+delete  /api/accounts/:id       //for delete specified account
+post    /api/accounts/search    //for search account by specified request payload
+```
+
+The real example code you can get at openbiz-cubi project. For more details please follow our documents.
+
 
 Get Started
 ----------------------
