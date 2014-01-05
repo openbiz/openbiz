@@ -43,8 +43,11 @@
     <section>
         <article><h1>Openbiz Application Framework</h1>
 
-<p>Openbiz Framework is node.js server-side application framework.
-It is based on express.js framework as web server. openbiz provides an application archecture to build a large enterprise level application.</p>
+<p>Openbiz Framework is node.js server-side application framework.</p>
+
+<h2>What is Openbiz</h2>
+
+<p>It is based on express.js framework as web server. openbiz provides an application archecture to build a large enterprise level application.</p>
 
 <p>Difference than other frameworks, Openbiz is focus on designing large scalable applications, it supports custom apps and modules concept as namespaces,
 That makes it can easy to handle a CRM or ERP large system. Also as a tradination of Openbiz history, we are still working on free developers time.</p>
@@ -56,7 +59,7 @@ All you need to do for build your application is just think and clear about your
 
 <ul><li>Easy to use Object inheritance support.</li><li>Apps and modules namespaces support for you own app.</li><li>Design for Big Data engine and supports mongoose.js as data model.</li><li>Built in smart data controller and URL router can automatic implememnt CRUD logic.</li><li>It has Openbiz-Appbuilder as a ready to use command line tool for generate code.</li><li>It has Openbiz-Cubi as a ready to use user and permission backend system.</li></ul>
 
-<h2>How Easy It Could Be</h2>
+<h2>Quick View</h2>
 
 <p>If you are a node.js developer as me, I believe you must have these hard time to write ton of CRUD logic for each of your data model in controllers,
 and have to manually map them into your app routes. So normally if you just done your data model, the work is just begin, but with openbiz we make it almost close to complete.
@@ -64,7 +67,8 @@ Let&#39;s see some samples.</p>
 
 <p>Let&#39;s say you already have a mongoose based data model called Account.js, Then your AccountController.js would be just simple like below, then all CRUD logic will automaticaly created:</p>
 
-<p><code>javascript
+<p>AccountController.js
+<code>javascript
 module.exports = function(app){
     return app.openbiz.ModelController.extend({
         _model: app.getModel(&#39;Account&#39;)
@@ -86,28 +90,29 @@ module.exports = function(app){
 <p>Then just that coupon of code you will get all ready to use feature like below:
 <code>
 // lets say you have mount the entire app under /api/* routes
-post /api/accounts              //for create a new account entity
-get  /api/accounts/:id          //for get a account entity by ID
-put  /api/accounts/:id          //for update account properties
-delete  /api/accounts/:id       //for delete specified account
-post    /api/accounts/search    //for search account by specified request payload
+post    /api/accounts               //for create a new account entity
+get     /api/accounts/:id           //for get a account entity by ID
+put     /api/accounts/:id           //for update account properties
+delete  /api/accounts/:id           //for delete specified account
+post    /api/accounts/search        //for search account by specified request payload
 </code></p>
 
 <p>The real example code you can get at openbiz-cubi project. For more details please follow our documents.</p>
+
+<h2>Installation</h2>
+
+<p>via <a href="http://www.npmjs.org">npm</a>:
+<code>sh
+cd /your-project-root-folder/
+npm install openbiz
+</code></p>
 
 <h2>Get Started</h2>
 
 <p>First, you need to have some <a href="http://www.nodejs.org">node.js</a> and <a href="http://www.expressjs.com">express.js</a> background.
 if you need helps, I suggest you go to look at their offical documents. Trust me it wouldn&#39;t be hard.  :-)</p>
 
-<h3>Install openbiz framework</h3>
-
-<p><code>sh
-cd /your-project-root-folder/
-node install openbiz
-</code></p>
-
-<h3>load it into your Express.js based application</h3>
+<h3>load the module</h3>
 
 <p><code>javascript
 //app is an instance of express.js app
@@ -119,10 +124,49 @@ var config = {
 };
 //init openbiz system
 var openbiz = require(&#39;openbiz&#39;)(app,config);
+</code></p>
+
+<h3>load a openbiz based application</h3>
+
+<p><code>javascript
 //then you can load your app into openbiz,
 //normall you would need openbiz-cubi as a user &amp; role management backend.
 var cubi    = require(&#39;openbiz-cubi&#39;)(openbiz).loadToRoute(&#39;/api&#39;);
-</code></p></article>
+</code></p>
+
+<h3>start to build your own app</h3>
+
+<h2>Credits</h2>
+
+<p>Written and maintained by [hellojixian].</p>
+
+<p>Thanks to: [zhangdong]</p>
+
+<h2>License</h2>
+
+<p>Copyright (c) 2013, Openbiz Cubi Framework
+All rights reserved.</p>
+
+<p>Redistribution and use in source and binary forms, with or without modification,
+are permitted provided that the following conditions are met:</p>
+
+<ul><li><p>Redistributions of source code must retain the above copyright notice, this
+list of conditions and the following disclaimer.</p></li><li><p>Redistributions in binary form must reproduce the above copyright notice, this
+list of conditions and the following disclaimer in the documentation and/or
+other materials provided with the distribution.</p></li><li><p>Neither the name of the {organization} nor the names of its
+contributors may be used to endorse or promote products derived from
+this software without specific prior written permission.</p></li></ul>
+
+<p>THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS &quot;AS IS&quot; AND
+ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED
+WARRANTIES OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE
+DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR
+ANY DIRECT, INDIRECT, INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES
+(INCLUDING, BUT NOT LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES;
+LOSS OF USE, DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON
+ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+(INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
+SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.</p></article>
     </section>
 
 
@@ -139,7 +183,7 @@ var cubi    = require(&#39;openbiz-cubi&#39;)(openbiz).loadToRoute(&#39;/api&#39
 <br clear="both">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Wed Dec 25 2013 10:54:51 GMT+0700 (ICT)
+    Documentation generated by <a href="https://github.com/jsdoc3/jsdoc">JSDoc 3.2.0</a> on Mon Dec 30 2013 13:30:56 GMT+0700 (ICT)
 </footer>
 
 <script> prettyPrint(); </script>
