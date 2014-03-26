@@ -24,12 +24,12 @@
 		        },
 				"changes":[{
 					"action": {
-						"type": {},
+						"type": "String",
 						"enum":["ADD","DELETE","UPDATE"]
 					},
 					"path": "String",
-					"original": "String",
-					"current": "String"
+					"original": {},
+					"current": {}
 				}]
 			}
 		],
