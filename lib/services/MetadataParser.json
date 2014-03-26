@@ -24,8 +24,8 @@
 		        },
 				"changes":[{
 					"action": {
-						"type": "String",
-						"enum":["ADD","DELETE","CHANGE"]
+						"type": {},
+						"enum":["ADD","DELETE","UPDATE"]
 					},
 					"path": "String",
 					"original": "String",
@@ -48,7 +48,8 @@
 		"visibility":{ 
 			"scope":{ 	
 				"type":"String",
-				"enum":["GLOBAL","ACCOUNT","OWNER"]
+				"enum":["GLOBAL","ACCOUNT","OWNER"],
+				"default":"ACCOUNT"
 			}
 		},
 		"ACL":[	
