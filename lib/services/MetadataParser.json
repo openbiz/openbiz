@@ -22,15 +22,13 @@
 		            "type": "Date",
 		            "default": "<% return Date.now %>"
 		        },
-				"changes":[{
-					"action": {
-						"type": "String",
-						"enum":["ADD","DELETE","UPDATE"]
-					},
-					"path": "String",
-					"original": {},
-					"current": {}
-				}]
+				"action": {
+					"type": "String",
+					"enum":["ADD","DELETE","UPDATE"]
+				},
+				"path": "String",
+				"original": {},
+				"current": {}
 			}
 		],
 		"ownership":{
