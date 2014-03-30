@@ -103,7 +103,7 @@ Credits
 ----------------------
 Written and maintained by [hellojixian].
 
-Thanks to: [zhangdong]
+Thanks to: [zhangdong,sunjianlong]
 
 License
 ----------------------
