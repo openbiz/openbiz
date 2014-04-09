@@ -11,6 +11,20 @@
 	            "default": "<% return Date.now %>"
 	        }
 		},
+		"state":{
+			"readable":{
+				"type":"Boolean",
+				"default":true
+			},
+			"writable":{
+				"type":"Boolean",
+				"default":true
+			},
+			"deletable":{
+				"type":"Boolean",
+				"default":true
+			}
+		},
 		"updates":[
 			{
 				"id":{
